@@ -4,7 +4,8 @@ There are Logic Gates, there are Quantum Gates. Let there also be SpEL Gates!
 Similar to logic gates, which implement Boolean functions, the SpEL Gates implement SpEL expressions.
 These expressions can be changed at runtime, allowing to modify the application flow or change business rules.
 
-See example in the demo project. Run the DemoApplication and try it out:
+### Demo project
+Run the DemoApplication and try it out:
 
 1. Let's try out some greetings:
 ```
@@ -13,7 +14,7 @@ Hello Alex. You are special!
 $ curl http://localhost:8080/hello/Mike/32
 Hello Mike. You're just another stranger
 ```
-Apparently there is a logic to a greeting
+Apparently there is a logic to a greeting.
 
 2. Let's see, what it is:
 ```
