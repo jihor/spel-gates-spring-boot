@@ -1,0 +1,6 @@
+endpoints:
+    spelgates:
+        enabled: true
+        sensitive: false
+
+management.security.enabled: false

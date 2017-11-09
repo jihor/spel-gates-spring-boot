@@ -1,0 +1,3 @@
+dependencies {
+    compile project(":spel-gates-spring-boot-core")
+}

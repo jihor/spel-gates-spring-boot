@@ -1,0 +1,7 @@
+rootProject.name = "spel-gates-spring-boot"
+
+include 'spel-gates-spring-boot-autoconfigure'
+include 'spel-gates-spring-boot-core'
+include 'spel-gates-spring-boot-starter'
+include 'demo'
+
