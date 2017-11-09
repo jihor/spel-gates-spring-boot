@@ -40,7 +40,7 @@ $ curl http://localhost:8080/spelgates/stringSpelGate2
 $ curl http://localhost:8080/hello/Alex/32
 Salut Alex. You are special!
 ```
-6. Now let's change the logic for the special greeting condition, raising the age to 35. In many countries, citizen must be older than 35 to qualify for the presidency, so this age makes you special :)
+6. Now let's change the logic for the special greeting condition, raising the age to 35. In many countries, a citizen must be older than 35 to qualify for the presidency, so this age makes you special :)
 ```
 $ curl -X POST -H "Content-Type: application/json" -d '{"expression": "#person.getName().substring(0,1).toUpperCase() == \'A\' && #person.getAge() >= 35"}' http://localhost:8080/spelgates/booleanSpelGate
 ```
