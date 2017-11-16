@@ -1,7 +1,7 @@
 # SpEL Gates for Spring Boot
 There are Logic Gates, there are Quantum Gates. Let there also be SpEL Gates!
 
-Similar to logic gates, which implement Boolean functions, the SpEL Gates implement SpEL expressions.
+Similar to logic gates, which implement Boolean functions, the SpEL Gates have SpEL expressions at their core.
 These expressions can be changed at runtime, allowing to modify the application flow or change business rules.
 
 ### Usage
