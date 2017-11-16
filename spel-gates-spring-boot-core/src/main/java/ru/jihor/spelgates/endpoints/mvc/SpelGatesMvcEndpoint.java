@@ -60,7 +60,7 @@ public class SpelGatesMvcEndpoint extends EndpointMvcAdapter {
     @ResponseBody
     @HypermediaDisabled
     public ResponseEntity<?> set(@PathVariable String name,
-                      @RequestBody Map<String, String> configuration) {
+                                 @RequestBody Map<String, String> configuration) {
         if (!getDelegate().isEnabled()) {
             return getDisabledResponse();
         }

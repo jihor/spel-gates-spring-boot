@@ -19,13 +19,13 @@ public class DemoController {
     public static final String PERSON = "person";
 
     @Autowired
-    private SpelGate<String, Boolean> booleanSpelGate;
+    private SpelGate<Boolean> booleanSpelGate;
 
     @Autowired
-    private SpelGate<String, String> stringSpelGate1;
+    private SpelGate<String> stringSpelGate1;
 
     @Autowired
-    private SpelGate<String, String> stringSpelGate2;
+    private SpelGate<String> stringSpelGate2;
 
     @RequestMapping(value = "/hello/{name}/{age}")
     public String hello(@PathVariable(NAME) String name, @PathVariable(AGE) Integer age) throws InterruptedException {

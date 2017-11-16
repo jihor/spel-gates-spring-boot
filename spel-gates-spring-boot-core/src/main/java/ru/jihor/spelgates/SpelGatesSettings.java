@@ -15,6 +15,13 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SpelGatesSettings {
     public static final ExpressionParser parser = new SpelExpressionParser();
 
+    public SpelGatesSettings() {
+    }
+
+    public SpelGatesSettings(Map<String, String> settings) {
+        settings.forEach(this::setExpressionString);
+    }
+
     private final Map<String, Expression> gateExpressions = new ConcurrentHashMap<>();
 
     public Expression getExpression(String gateName) {

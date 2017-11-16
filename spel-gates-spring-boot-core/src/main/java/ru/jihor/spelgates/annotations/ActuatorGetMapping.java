@@ -7,17 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * This class is copied from spring-boot-actuator library
  *
  * @author jihor (jihor@ya.ru)
- *         Created on 2017-11-07
+ * Created on 2017-11-07
  */
 
 /**
@@ -33,7 +29,7 @@ import java.lang.annotation.Target;
 @ResponseBody
 @RequestMapping(method = RequestMethod.GET, produces = {
         ActuatorMediaTypes.APPLICATION_ACTUATOR_V1_JSON_VALUE,
-        MediaType.APPLICATION_JSON_VALUE })
+        MediaType.APPLICATION_JSON_VALUE})
 public @interface ActuatorGetMapping {
 
     /**

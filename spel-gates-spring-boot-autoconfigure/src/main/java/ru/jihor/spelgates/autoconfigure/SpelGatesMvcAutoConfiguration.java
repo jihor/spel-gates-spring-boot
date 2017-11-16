@@ -12,12 +12,12 @@ import ru.jihor.spelgates.endpoints.mvc.SpelGatesMvcEndpoint;
 
 /**
  * @author jihor (jihor@ya.ru)
- *         Created on 2017-11-07
+ * Created on 2017-11-07
  */
 @Configuration
 @ConditionalOnClass(Endpoint.class)
 @ConditionalOnWebApplication
-@AutoConfigureAfter({ SpelGatesAutoConfiguration.class })
+@AutoConfigureAfter({SpelGatesAutoConfiguration.class})
 public class SpelGatesMvcAutoConfiguration {
 
     @Bean

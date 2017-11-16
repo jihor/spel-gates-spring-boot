@@ -4,8 +4,38 @@ There are Logic Gates, there are Quantum Gates. Let there also be SpEL Gates!
 Similar to logic gates, which implement Boolean functions, the SpEL Gates implement SpEL expressions.
 These expressions can be changed at runtime, allowing to modify the application flow or change business rules.
 
+### Usage
+Expressions go to `spring.spelgates` category in key-value format, e.g. (for YAML):
+```
+spring:
+    spelgates:
+        booleanSpelGate: "#person.getName().substring(0,1).toUpperCase() == 'A' && #person.getAge() >= 30"
+        stringSpelGate1: "sayHello(#name)"
+        greetingMessage: "'Hello'"
+```
+These are then used by the gates bound to specified keys. Returned type must match between the expression and the gate.
+
+### API Description
+#### SpelGate class
+The gate returning result T must extend SpelGate<T> class. The key is specified in constructor, by default the bean name will be used as key.
+
+#### REST API
+When using spel-gates-spring-boot-starter, the following REST API is available for controlling the expressions at runtime:
+* `/spelgates`, method = `GET` - get list of all expressions in key-value format
+* `/spelgates/{key}`, method = `GET` - get expression for key
+* `/spelgates/{key}`, method = `POST` - set expression for key
+
+    Accepts:
+    - json like ``
+{
+    "expression": "value"
+}
+``
+
+    Returns HTTP 204 on success.
+
 ### Demo project
-Run the DemoApplication and try it out:
+The demo project contains a usage example. Run the DemoApplication and try it out:
 
 1. Let's try out some greetings:
 ```
@@ -14,22 +44,22 @@ Hello Alex. You are special!
 $ curl http://localhost:8080/hello/Mike/32
 Hello Mike. You're just another stranger
 ```
-Apparently there is a logic to a greeting.
+Apparently there is a logic to a greeting :)
 
 2. Let's see, what it is:
 ```
 $ curl http://localhost:8080/spelgates
 {
     "stringSpelGate1": "sayHello(#name)",
-    "stringSpelGate2": "'Hello'",
+    "greetingMessage": "'Hello'",
     "booleanSpelGate": "#person.getName().substring(0,1).toUpperCase() == 'A' && #person.getAge() >= 30"
 }
 ```
-`booleanSpelGate` decides if the person deserves a special greeting, `stringSpelGate1` invokes the `sayHello()` method, `stringSpelGate2` contains the greeting message.
+`booleanSpelGate` decides if the person deserves a special greeting, `stringSpelGate1` invokes the `sayHello()` method, `greetingMessage` contains the greeting message.
 
-3. Get the value for `stringSpelGate2`:
+3. Get the value for `greetingMessage`:
 ```
-$ curl http://localhost:8080/spelgates/stringSpelGate2
+$ curl http://localhost:8080/spelgates/greetingMessage
 {
     "expression": "'Hello'"
 }
@@ -37,8 +67,8 @@ $ curl http://localhost:8080/spelgates/stringSpelGate2
 
 4. Let's change it and see if it did in fact change:
 ```
-$ curl -X POST -H "Content-Type: application/json" -d '{"expression": "\'Salut\'"}' http://localhost:8080/spelgates/stringSpelGate2
-$ curl http://localhost:8080/spelgates/stringSpelGate2
+$ curl -X POST -H "Content-Type: application/json" -d '{"expression": "\'Salut\'"}' http://localhost:8080/spelgates/greetingMessage
+$ curl http://localhost:8080/spelgates/greetingMessage
 {
     "expression": "'Salut'"
 }

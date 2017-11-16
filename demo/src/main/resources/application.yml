@@ -1,0 +1,5 @@
+spring:
+    spelgates:
+        booleanSpelGate: "#person.getName().substring(0,1).toUpperCase() == 'A' && #person.getAge() >= 30"
+        stringSpelGate1: "sayHello(#name)"
+        greetingMessage: "'Hello'"

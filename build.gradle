@@ -33,6 +33,10 @@ subprojects {
 		}
 	}
 
+	dependencies{
+		compileOnly "org.projectlombok:lombok"
+	}
+
 	if (project.name != 'demo') {
 		apply plugin: 'maven-publish'
 		apply plugin: 'com.jfrog.bintray'
