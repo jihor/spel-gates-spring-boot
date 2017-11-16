@@ -28,7 +28,7 @@ When using spel-gates-spring-boot-starter, the following REST API is available f
     Accepts:
     - json like ``
 {
-    "expression": "value"
+    "expression": "<expression value>"
 }
 ``
 
