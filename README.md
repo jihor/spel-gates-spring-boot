@@ -19,21 +19,29 @@ Apparently there is a logic to a greeting.
 2. Let's see, what it is:
 ```
 $ curl http://localhost:8080/spelgates
-{"stringSpelGate1":"sayHello(#name)","stringSpelGate2":"'Hello'","booleanSpelGate":"#person.getName().substring(0,1).toUpperCase() == 'A' && #person.getAge() >= 30"}
+{
+    "stringSpelGate1": "sayHello(#name)",
+    "stringSpelGate2": "'Hello'",
+    "booleanSpelGate": "#person.getName().substring(0,1).toUpperCase() == 'A' && #person.getAge() >= 30"
+}
 ```
 `booleanSpelGate` decides if the person deserves a special greeting, `stringSpelGate1` invokes the `sayHello()` method, `stringSpelGate2` contains the greeting message.
 
 3. Get the value for `stringSpelGate2`:
 ```
 $ curl http://localhost:8080/spelgates/stringSpelGate2
-'Hello'
+{
+    "expression": "'Hello'"
+}
 ```
 
 4. Let's change it and see if it did in fact change:
 ```
 $ curl -X POST -H "Content-Type: application/json" -d '{"expression": "\'Salut\'"}' http://localhost:8080/spelgates/stringSpelGate2
 $ curl http://localhost:8080/spelgates/stringSpelGate2
-'Salut'
+{
+    "expression": "'Salut'"
+}
 ```
 5. Try it out:
 ```

@@ -12,6 +12,7 @@ import ru.jihor.spelgates.annotations.ActuatorGetMapping;
 import ru.jihor.spelgates.annotations.ActuatorPostMapping;
 import ru.jihor.spelgates.endpoints.SpelGatesEndpoint;
 
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -23,6 +24,7 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "endpoints.spelgates")
 public class SpelGatesMvcEndpoint extends EndpointMvcAdapter {
     public static final String NO_EXPRESSION_DEFINED = "No expression defined";
+    public static final String EXPRESSION = "expression";
     @Getter
     private final SpelGatesEndpoint delegate;
 
@@ -38,39 +40,40 @@ public class SpelGatesMvcEndpoint extends EndpointMvcAdapter {
     @ActuatorGetMapping("/{name:.*}")
     @ResponseBody
     @HypermediaDisabled
-    public Object get(@PathVariable String name) {
+    public ResponseEntity<?> get(@PathVariable String name) {
         if (!getDelegate().isEnabled()) {
             return getDisabledResponse();
         }
         String expression = getDelegate().getExpression(name);
-        return expression != null ? expression : NO_EXPRESSION_DEFINED;
+        String expressionValue = expression != null ? expression : NO_EXPRESSION_DEFINED;
+        return ResponseEntity.ok(Collections.singletonMap(EXPRESSION, expressionValue));
     }
 
     @ActuatorGetMapping("/")
     @ResponseBody
     @HypermediaDisabled
-    public Object getAll() {
-        return getDelegate().isEnabled() ? getDelegate().invoke() : getDisabledResponse();
+    public ResponseEntity<?> getAll() {
+        return getDelegate().isEnabled() ? ResponseEntity.ok(getDelegate().invoke()) : getDisabledResponse();
     }
 
     @ActuatorPostMapping("/{name:.*}")
     @ResponseBody
     @HypermediaDisabled
-    public Object set(@PathVariable String name,
+    public ResponseEntity<?> set(@PathVariable String name,
                       @RequestBody Map<String, String> configuration) {
         if (!getDelegate().isEnabled()) {
             return getDisabledResponse();
         }
         try {
             getDelegate().setExpression(name, getExpression(configuration));
-            return ResponseEntity.ok().build();
+            return ResponseEntity.noContent().build();
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body(ex);
         }
     }
 
     private String getExpression(Map<String, String> configuration) {
-        String value = configuration.get("expression");
+        String value = configuration.get(EXPRESSION);
         if (value == null) {
             throw new IllegalArgumentException("Null expression is not allowed");
         }

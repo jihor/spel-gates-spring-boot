@@ -22,11 +22,11 @@ public class SpelGate<T, U> implements BeanNameAware {
     @Setter
     private String name;
 
-    protected SpelGate(SpelGatesSettings spelGatesSettings) {
+    public SpelGate(SpelGatesSettings spelGatesSettings) {
         this(spelGatesSettings, null);
     }
 
-    protected SpelGate(SpelGatesSettings spelGatesSettings, String gateName) {
+    public SpelGate(SpelGatesSettings spelGatesSettings, String gateName) {
         this.spelGatesSettings = spelGatesSettings;
         setName(gateName);
     }
@@ -38,17 +38,8 @@ public class SpelGate<T, U> implements BeanNameAware {
         }
     }
 
-    protected Expression getExpression() {
+    public Expression getExpression() {
         return spelGatesSettings.getExpression(getName());
-    }
-
-    public U evaluate(Object o) {
-        StandardEvaluationContext context = createContext(o);
-        return evaluate(context);
-    }
-
-    private U evaluate(StandardEvaluationContext context) {
-        return (U) getExpression().getValue(context);
     }
 
     private StandardEvaluationContext createContext(Object rootObject) {
@@ -77,6 +68,15 @@ public class SpelGate<T, U> implements BeanNameAware {
         StandardEvaluationContext context = createContext(rootObject);
         context.setVariables(additionalContext);
         return context;
+    }
+
+    private U evaluate(StandardEvaluationContext context) {
+        return (U) getExpression().getValue(context);
+    }
+
+    public U evaluate(Object o) {
+        StandardEvaluationContext context = createContext(o);
+        return evaluate(context);
     }
 
     public U evaluate(Object rootObject, String key, Object value) {
