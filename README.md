@@ -17,7 +17,7 @@ These are then used by the gates bound to specified keys. Returned type must mat
 
 ### API Description
 #### SpelGate class
-The gate returning result T must extend SpelGate\<T\> class. The key is specified in constructor, by default the bean name will be used as key.
+The gate returning result T must extend `SpelGate<T>` class. The key is specified in constructor, by default the bean name will be used as key.
 
 #### REST API
 When using spel-gates-spring-boot-starter, the following REST API is available for controlling the expressions at runtime:
