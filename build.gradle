@@ -71,7 +71,7 @@ subprojects {
 				repo = 'maven'
 				name = rootProject.name
 				licenses = ['Apache-2.0']
-				vcsUrl = 'https://github.com/jihor/spelgates-spring-boot.git'
+				vcsUrl = 'https://github.com/jihor/spel-gates-spring-boot.git'
 			}
 		}
 
