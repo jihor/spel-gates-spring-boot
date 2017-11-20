@@ -4,6 +4,8 @@ There are Logic Gates, there are Quantum Gates. Let there also be SpEL Gates!
 Similar to logic gates, which implement Boolean functions, the SpEL Gates have SpEL expressions at their core.
 These expressions can be changed at runtime, allowing to modify the application flow or change business rules.
 
+[![CircleCI](https://circleci.com/gh/jihor/spel-gates-spring-boot/tree/master.svg?style=shield)](https://circleci.com/gh/jihor/spel-gates-spring-boot/tree/master)
+
 ### Usage
 Expressions go to `spring.spelgates` category in key-value format, e.g. (for YAML):
 ```
