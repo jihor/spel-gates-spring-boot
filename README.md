@@ -1,6 +1,7 @@
 # SpEL Gates for Spring Boot
 A Spring Boot starter for creating small gate-typed beans with SpEL expressions inside
 
+[ ![Download](https://api.bintray.com/packages/jihor/maven/spel-gates-spring-boot/images/download.svg) ](https://bintray.com/jihor/maven/spel-gates-spring-boot/_latestVersion)
 [![CircleCI](https://circleci.com/gh/jihor/spel-gates-spring-boot/tree/master.svg?style=shield)](https://circleci.com/gh/jihor/spel-gates-spring-boot/tree/master)
 
 There are Logic Gates, there are Quantum Gates. Let there also be SpEL Gates!
