@@ -9,6 +9,29 @@ There are Logic Gates, there are Quantum Gates. Let there also be SpEL Gates!
 Similar to logic gates, which implement Boolean functions, the SpEL Gates have SpEL expressions at their core.
 These expressions can be changed at runtime, allowing to modify the application flow or change business rules.
 
+
+### Download
+
+##### Gradle
+``` 
+repositories { 
+    jcenter() 
+} dependencies { 
+    compile group: 'ru.jihor.spel-gates-spring-boot', name: 'spel-gates-spring-boot-starter', version: '<version>' 
+    // or 
+    // compile 'ru.jihor.spel-gates-spring-boot:spel-gates-spring-boot-starter:<version>' 
+    } 
+```
+##### Maven 
+``` 
+<dependency> 
+    <groupId>ru.jihor.hiatus-spring-boot</groupId> 
+    <artifactId>spel-gates-spring-boot-starter</artifactId> 
+    <version>(version)</version> 
+    <type>pom</type> 
+</dependency> 
+```
+
 ### Usage
 Expressions go to `spring.spelgates` category in key-value format, e.g. (for YAML):
 ```
