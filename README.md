@@ -25,7 +25,7 @@ repositories {
 ##### Maven 
 ``` 
 <dependency> 
-    <groupId>ru.jihor.hiatus-spring-boot</groupId> 
+    <groupId>ru.jihor.spel-gates-spring-boot</groupId> 
     <artifactId>spel-gates-spring-boot-starter</artifactId> 
     <version>(version)</version> 
     <type>pom</type> 
