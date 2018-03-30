@@ -9,7 +9,7 @@ buildscript {
 }
 
 group "ru.jihor.spel-gates-spring-boot"
-version "0.0.2"
+version "0.0.3-SNAPSHOT"
 
 subprojects {
 	apply plugin: 'io.spring.dependency-management'
