@@ -24,7 +24,6 @@ public class SpelGate<T> implements BeanNameAware {
     private SpelGatesSettings spelGatesSettings;
 
     @Getter
-    @Setter
     private String name;
 
     public SpelGate() {
@@ -32,13 +31,18 @@ public class SpelGate<T> implements BeanNameAware {
     }
 
     public SpelGate(String gateName) {
-        setName(gateName);
+        name = gateName;
+    }
+
+    @Deprecated
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     public void setBeanName(String name) {
         if (getName() == null) {
-            setName(name);
+            this.name = name;
         }
     }
 
@@ -51,6 +55,10 @@ public class SpelGate<T> implements BeanNameAware {
 
     public Expression getExpression() {
         return spelGatesSettings.getExpression(getName());
+    }
+
+    public void setExpression(Expression expression) {
+        spelGatesSettings.setExpression(getName(), expression);
     }
 
     private StandardEvaluationContext createContext(Object rootObject) {
