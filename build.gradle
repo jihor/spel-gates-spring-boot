@@ -29,7 +29,7 @@ subprojects {
 			mavenBom 'org.springframework.boot:spring-boot-dependencies:2.0.6.RELEASE'
 		}
 		dependencies {
-			dependency 'org.projectlombok:lombok:1.18.2'
+			dependency 'org.projectlombok:lombok:1.16.18'
 		}
 	}
 
