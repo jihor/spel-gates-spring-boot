@@ -1,7 +1,6 @@
 package ru.jihor.spelgates;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.BeanInitializationException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;

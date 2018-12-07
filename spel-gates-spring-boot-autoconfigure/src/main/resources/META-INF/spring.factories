@@ -1,3 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-ru.jihor.spelgates.autoconfigure.SpelGatesAutoConfiguration,\
-ru.jihor.spelgates.autoconfigure.SpelGatesMvcAutoConfiguration
+ru.jihor.spelgates.autoconfigure.SpelGatesAutoConfiguration

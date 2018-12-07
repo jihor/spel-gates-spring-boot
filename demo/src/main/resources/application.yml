@@ -1,5 +1,9 @@
 spring:
     spelgates:
-        booleanSpelGate: "#person.getName().substring(0,1).toUpperCase() == 'A' && #person.getAge() >= 30"
+        booleanSpelGate: "#person.getName().substring(0,1).toUpperCase() == \"A\" && #person.getAge() >= 30"
         stringSpelGate1: "sayHello(#name)"
-        greetingMessage: "'Hello'"
+        greetingMessage: "\"Hello\""
+
+management.endpoint.health.show-details: always
+management.endpoints.web.exposure.include: info, health, metrics, spelgates
+

@@ -76,7 +76,7 @@ Apparently there is a logic to a greeting :)
 
 2. Let's see, what it is:
 ```
-$ curl http://localhost:8080/spelgates
+$ curl http://localhost:8080/actuator/spelgates
 {
     "stringSpelGate1": "sayHello(#name)",
     "greetingMessage": "'Hello'",
@@ -87,19 +87,16 @@ $ curl http://localhost:8080/spelgates
 
 3. Get the value for `greetingMessage`:
 ```
-$ curl http://localhost:8080/spelgates/greetingMessage
-{
-    "expression": "'Hello'"
-}
+$ curl http://localhost:8080/actuator/spelgates/greetingMessage
+"Hello"
 ```
+(if this doens't work for you and you get a 400 error with a `Missing parameters: name` description, add `-parameters` flag to compiler settings, like [this](https://stackoverflow.com/questions/37463902/how-to-pass-parameters-javac-flag-to-java-compiler-via-gradle))
 
 4. Let's change it and see if it did in fact change:
 ```
-$ curl -X POST -H "Content-Type: application/json" -d '{"expression": "\'Salut\'"}' http://localhost:8080/spelgates/greetingMessage
-$ curl http://localhost:8080/spelgates/greetingMessage
-{
-    "expression": "'Salut'"
-}
+$ curl -X POST -H "Content-Type: application/json" -d '{"expression": "\"Salut\""}' http://localhost:8080/actuator/spelgates/greetingMessage
+$ curl http://localhost:8080/actuator/spelgates/greetingMessage
+"Salut"
 ```
 5. Try it out:
 ```
@@ -108,7 +105,7 @@ Salut Alex. You are special!
 ```
 6. Now let's change the logic for the special greeting condition, raising the age to 35. In many countries, a citizen must be 35 or older to qualify for the presidency, so this age makes you special :)
 ```
-$ curl -X POST -H "Content-Type: application/json" -d '{"expression": "#person.getName().substring(0,1).toUpperCase() == \'A\' && #person.getAge() >= 35"}' http://localhost:8080/spelgates/booleanSpelGate
+$ curl -X POST -H "Content-Type: application/json" -d '{"expression": "#person.getName().substring(0,1).toUpperCase() == \"A\" && #person.getAge() >= 35"}' http://localhost:8080/actuator/spelgates/booleanSpelGate
 ```
 
 7: Now our Alex is not special until he is 35 years old:

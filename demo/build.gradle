@@ -3,4 +3,10 @@ dependencies {
     compile project(":spel-gates-spring-boot-starter")
     compile "org.springframework.boot:spring-boot-starter"
     compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-actuator"
+    compile "org.springframework:spring-web"
+}
+
+compileJava {
+    options.compilerArgs << '-parameters'
 }
